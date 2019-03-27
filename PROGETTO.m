@@ -51,5 +51,8 @@ v = zeros(h/ore,1);
  xlabel('domeniche');
  ylabel('consumo');
  
+ %prova
  
+ figure(4)
+ plot(domeniche,consumo_domeniche); 
  

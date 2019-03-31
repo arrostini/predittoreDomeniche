@@ -42,7 +42,7 @@ v = zeros(h/ore,1);
      end
  end
  
- domeniche = linspace(1,104,104);
+ domeniche = linspace(1,104,104)';
  
  figure(3)
  plot(domeniche,consumo_domeniche);
@@ -50,9 +50,12 @@ v = zeros(h/ore,1);
  title('consumo domenicale');
  xlabel('domeniche');
  ylabel('consumo');
+ hold on
  
- %prova
+ n = length(consumo_domeniche);
+ phi3 = [ones(n,1) domeniche domeniche.^2];
+ thetals3 = phi3\consumo_domeniche;
+ %domeniche_ext = [min(domeniche):1:max(domeniche)]';
+ plot(domeniche, phi3*thetals3);
  
- figure(4)
- plot(domeniche,consumo_domeniche); 
  

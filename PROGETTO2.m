@@ -27,6 +27,11 @@ phi4= [phi3, giorni.^4, ore.^4, giorni.^3.*ore, ore.^3.*giorni, giorni.^2.*ore.^
 epsilon4 = consumi - phi4*thetals4;
 stima_consumi4 = phi4*thetals4;
 
+phi5= [phi4, giorni.^5, ore.^5, giorni.^4.*ore, ore.^4.*giorni, giorni.^3.*ore.^2, giorni.^2.*ore.^3];
+[thetals5, devthetals5]= lscov(phi5, consumi);
+epsilon5 = consumi - phi5*thetals5;
+stima_consumi5 = phi5*thetals5;
+
 
 
 giorni_ext = linspace(min(giorni),max(giorni),100);
@@ -54,6 +59,18 @@ stima_consumi_mat4 = reshape(stima_consumi_ext4,size(G));
 
 figure(4);
 mesh(G,O, stima_consumi_mat4);
+grid on
+hold on
+scatter3(giorni,ore,consumi,"o");
+
+%quinto grado
+
+phi5_ext = [ones(n1,1),G(:),O(:),G(:).^2,O(:).^2,G(:).*O(:),G(:).^3,O(:).^3,(G(:).^2).*O(:),(O(:).^2).*G(:), G(:).^4, O(:).^4, G(:).^3.*O(:), O(:).^3.*G(:), O(:).^2.*G(:).^2,G(:).^5, O(:).^5, G(:).^4.*O(:), O(:).^4.*G(:), G(:).^3.*O(:).^2, G(:).^2.*O(:).^3];
+stima_consumi_ext5 = phi5_ext*thetals5;
+stima_consumi_mat5 = reshape(stima_consumi_ext5,size(G));
+
+figure(5);
+mesh(G,O, stima_consumi_mat5);
 grid on
 hold on
 scatter3(giorni,ore,consumi,"o");

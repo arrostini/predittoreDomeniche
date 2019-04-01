@@ -53,9 +53,10 @@ v = zeros(h/ore,1);
  hold on
  
  n = length(consumo_domeniche);
- phi3 = [ones(n,1) domeniche domeniche.^2];
+ phi3 = [ones(n,1) domeniche domeniche.^2 domeniche.^3 domeniche.^4 domeniche.^5 domeniche.^6];
  thetals3 = phi3\consumo_domeniche;
  %domeniche_ext = [min(domeniche):1:max(domeniche)]';
  plot(domeniche, phi3*thetals3);
+ hold on
  
  

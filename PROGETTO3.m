@@ -1,7 +1,7 @@
 clc
 close all
 
-tab = readtable('caricoDEhour.xlsx', 'Range','A2:D8762');
+tab = readtable('caricoDEhour.xlsx', 'Range','A8763:D17522');
 
 mat = tab{:,:};
 
@@ -91,7 +91,3 @@ mesh(G,O, stima_consumi_mat6);
 grid on
 hold on
 scatter3(giorni,ore,consumi,"o");
-
-%serie di fourier
-
-T = 

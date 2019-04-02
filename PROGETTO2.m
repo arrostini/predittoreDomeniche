@@ -21,21 +21,29 @@ phi3= [ones(n,1) giorni ore giorni.^2 ore.^2 giorni.*ore giorni.^3 ore.^3 (giorn
 [thetals3, devthetals3]= lscov(phi3, consumi);
 epsilon3 = consumi - phi3*thetals3;
 stima_consumi3 = phi3*thetals3;
+ssr3 = epsilon3'*epsilon3;
+q3 = length(thetals3);
 
 phi4= [phi3, giorni.^4, ore.^4, giorni.^3.*ore, ore.^3.*giorni, giorni.^2.*ore.^2];
 [thetals4, devthetals4]= lscov(phi4, consumi);
 epsilon4 = consumi - phi4*thetals4;
 stima_consumi4 = phi4*thetals4;
+ssr4 = epsilon4'*epsilon4;
+q4 = length(thetals4);
 
 phi5= [phi4, giorni.^5, ore.^5, giorni.^4.*ore, ore.^4.*giorni, giorni.^3.*ore.^2, giorni.^2.*ore.^3];
 [thetals5, devthetals5]= lscov(phi5, consumi);
 epsilon5 = consumi - phi5*thetals5;
 stima_consumi5 = phi5*thetals5;
+ssr5 = epsilon5'*epsilon5;
+q5 = length(thetals5);
 
 phi6= [phi5, giorni.^6, ore.^6, giorni.^5.*ore, ore.^5.*giorni, giorni.^4.*ore.^2, giorni.^2.*ore.^4, giorni.^3.*ore.^3];
 [thetals6, devthetals6]= lscov(phi6, consumi);
 epsilon6 = consumi - phi6*thetals6;
 stima_consumi6 = phi6*thetals6;
+ssr6 = epsilon6'*epsilon6;
+q6 = length(thetals6);
 
 
 
@@ -114,10 +122,22 @@ phiFO_ext = [ones(n1,1) cos(w*O(:)) sin(w*O(:)) cos(2*w*O(:)) sin(2*w*O(:)) cos(
 stima_consumi_extFO = phiFO_ext*thetalsFO;
 stima_consumi_matFO = reshape(stima_consumi_extFO,size(G));
 
-stima_consumi_matFF = (stima_consumi_matF + stima_consumi_matFO)*(1/2);
+stima_consumi_matFF = (stima_consumi_matF + stima_consumi_matFO)*(1/4) + (stima_consumi_mat4)*(1/2);
 figure(7);
 mesh(G,O, stima_consumi_matFF);
 grid on
 hold on
 scatter3(giorni,ore,consumi,"o");
+
+%test f
+a = 0.05;
+
+f34 = (n - q4)*(ssr3-ssr4)/ssr4;
+fa34 = finv(1-a, 1, (n-q4));
+
+f45 = (n - q5)*(ssr4-ssr5)/ssr5;
+fa45 = finv(1-a, 1, (n-q5));
+
+f56 = (n - q6)*(ssr5-ssr6)/ssr6;
+fa56 = finv(1-a, 1, (n-q6));
 

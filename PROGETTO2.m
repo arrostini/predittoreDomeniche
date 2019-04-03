@@ -130,12 +130,12 @@ hold on
 scatter3(giorni,ore,consumi,"o");
 
 %stima fourier 2
-phiF2 = [ones(n,1) cos(w*giorni_l) sin(w*giorni_l) cos(w*ore) sin(w*ore) cos(2*w*giorni_l) sin(2*w*giorni_l) cos(2*w*ore) sin(2*w*ore) cos(3*w*giorni_l) sin(3*w*giorni_l) cos(3*w*ore) sin(3*w*ore)];
+phiF2 = [ones(n,1) cos(w*giorni_l) sin(w*giorni_l) cos(w*ore) sin(w*ore) cos(2*w*giorni_l) sin(2*w*giorni_l) cos(2*w*ore) sin(2*w*ore) cos(3*w*giorni_l) sin(3*w*giorni_l) cos(3*w*ore) sin(3*w*ore) cos(4*w*giorni_l) sin(4*w*giorni_l) cos(4*w*ore) sin(4*w*ore)];
 [thetalsF2, devthetalsF2]= lscov(phiF2, consumi);
-epsilonF2 = consumi - phiF2*thetalsF;
-stima_consumiF2 = phiF2*thetalsF;
+epsilonF2 = consumi - phiF2*thetalsF2;
+stima_consumiF2 = phiF2*thetalsF2;
 
-phiF2_ext = [ones(n1,1) cos(w*G(:)) sin(w*G(:)) cos(w*O(:)) sin(w*O(:)) cos(2*w*G(:)) sin(2*w*G(:)) cos(2*w*O(:)) sin(2*w*O(:)) cos(3*w*G(:)) sin(3*w*G(:)) cos(3*w*O(:)) sin(3*w*O(:))];
+phiF2_ext = [ones(n1,1) cos(w*G(:)) sin(w*G(:)) cos(w*O(:)) sin(w*O(:)) cos(2*w*G(:)) sin(2*w*G(:)) cos(2*w*O(:)) sin(2*w*O(:)) cos(3*w*G(:)) sin(3*w*G(:)) cos(3*w*O(:)) sin(3*w*O(:)) cos(4*w*G(:)) sin(4*w*G(:)) cos(4*w*O(:)) sin(4*w*O(:))];
 stima_consumi_extF2 = phiF2_ext*thetalsF2;
 stima_consumi_matF2 = reshape(stima_consumi_extF2,size(G));
 

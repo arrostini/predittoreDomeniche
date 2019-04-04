@@ -91,3 +91,51 @@ mesh(G,O, stima_consumi_mat6);
 grid on
 hold on
 scatter3(giorni,ore,consumi,"o");
+
+%serie di fourier
+
+giorni_l = giorni;
+w = 2*pi/365;
+phiF = [ones(n,1) cos(w*giorni_l) sin(w*giorni_l) cos(2*w*giorni_l) sin(2*w*giorni_l) cos(3*w*giorni_l) sin(3*w*giorni_l) cos(4*w*giorni_l) sin(4*w*giorni_l) cos(5*w*giorni_l) sin(5*w*giorni_l) cos(6*w*giorni_l) sin(6*w*giorni_l)];
+[thetalsF, devthetalsF]= lscov(phiF, consumi);
+epsilonF = consumi - phiF*thetalsF;
+stima_consumiF = phiF*thetalsF;
+
+phiF_ext = [ones(n1,1) cos(w*G(:)) sin(w*G(:)) cos(2*w*G(:)) sin(2*w*G(:)) cos(3*w*G(:)) sin(3*w*G(:)) cos(4*w*G(:)) sin(4*w*G(:)) cos(5*w*G(:)) sin(5*w*G(:)) cos(6*w*G(:)) sin(6*w*G(:))];
+stima_consumi_extF = phiF_ext*thetalsF;
+stima_consumi_matF = reshape(stima_consumi_extF,size(G));
+
+phiFO = [ones(n,1) cos(w*ore) sin(w*ore) cos(2*w*ore) sin(2*w*ore) cos(3*w*ore) sin(3*w*ore) cos(4*w*ore) sin(4*w*ore) cos(5*w*ore) sin(5*w*ore) cos(6*w*ore) sin(6*w*ore)];
+[thetalsFO, devthetalsFO]= lscov(phiFO, consumi);
+epsilonFO = consumi - phiFO*thetalsFO;
+stima_consumiFO = phiFO*thetalsFO;
+
+phiFO_ext = [ones(n1,1) cos(w*O(:)) sin(w*O(:)) cos(2*w*O(:)) sin(2*w*O(:)) cos(3*w*O(:)) sin(3*w*O(:)) cos(4*w*O(:)) sin(4*w*O(:)) cos(5*w*O(:)) sin(5*w*O(:)) cos(6*w*O(:)) sin(6*w*O(:))];
+stima_consumi_extFO = phiFO_ext*thetalsFO;
+stima_consumi_matFO = reshape(stima_consumi_extFO,size(G));
+
+stima_consumi_matFF = (stima_consumi_matF + stima_consumi_matFO)*(1/4) + (stima_consumi_mat4)*(1/2);
+figure(7);
+mesh(G,O, stima_consumi_matFF);
+grid on
+hold on
+scatter3(giorni,ore,consumi,"o");
+
+%stima fourier 2
+phiF2 = [ones(n,1) cos(w*giorni_l) sin(w*giorni_l) cos(w*ore) sin(w*ore) cos(2*w*giorni_l) sin(2*w*giorni_l) cos(2*w*ore) sin(2*w*ore) cos(3*w*giorni_l) sin(3*w*giorni_l) cos(3*w*ore) sin(3*w*ore) cos(4*w*giorni_l) sin(4*w*giorni_l) cos(4*w*ore) sin(4*w*ore) cos(5*w*giorni_l) sin(5*w*giorni_l) cos(5*w*ore) sin(5*w*ore) cos(6*w*giorni_l) sin(6*w*giorni_l) cos(6*w*ore) sin(6*w*ore)];
+[thetalsF2, devthetalsF2]= lscov(phiF2, consumi);
+epsilonF2 = consumi - phiF2*thetalsF2;
+stima_consumiF2 = phiF2*thetalsF2;
+ssrF2 = epsilonF2'*epsilonF2;
+qF2 = length(thetalsF2);
+
+
+phiF2_ext = [ones(n1,1) cos(w*G(:)) sin(w*G(:)) cos(w*O(:)) sin(w*O(:)) cos(2*w*G(:)) sin(2*w*G(:)) cos(2*w*O(:)) sin(2*w*O(:)) cos(3*w*G(:)) sin(3*w*G(:)) cos(3*w*O(:)) sin(3*w*O(:)) cos(4*w*G(:)) sin(4*w*G(:)) cos(4*w*O(:)) sin(4*w*O(:)) cos(5*w*G(:)) sin(5*w*G(:)) cos(5*w*O(:)) sin(5*w*O(:)) cos(6*w*G(:)) sin(6*w*G(:)) cos(6*w*O(:)) sin(6*w*O(:))];
+stima_consumi_extF2 = phiF2_ext*thetalsF2;
+stima_consumi_matF2 = reshape(stima_consumi_extF2,size(G));
+
+figure(8);
+mesh(G,O, stima_consumi_matF2);
+grid on
+hold on
+scatter3(giorni,ore,consumi,"o");

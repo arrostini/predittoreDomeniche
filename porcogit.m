@@ -217,7 +217,6 @@ mdlF2 = (log(n) + qF2)/n + log(ssrF2);
 %% CROSSVALIDAZIONE (modello Fourier)
 %Due "%" perché mi piaceva lo sfondo giallo
 
-%
 consumiVal = rendimentoValidazione;
 
 phiF2Val = [ones(n,1), cos(w*giorni_l), sin(w*giorni_l), cos(w*ore), sin(w*ore), cos(2*w*giorni_l), sin(2*w*giorni_l), cos(2*w*ore), sin(2*w*ore), cos(3*w*giorni_l), sin(3*w*giorni_l), cos(3*w*ore), sin(3*w*ore), cos(4*w*giorni_l), sin(4*w*giorni_l), cos(4*w*ore), sin(4*w*ore), cos(5*w*giorni_l), sin(5*w*giorni_l), cos(5*w*ore), sin(5*w*ore), cos(6*w*giorni_l), sin(6*w*giorni_l), cos(6*w*ore), sin(6*w*ore)];

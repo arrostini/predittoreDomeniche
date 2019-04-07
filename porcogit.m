@@ -13,7 +13,7 @@ ore= solo_domeniche(:,2);
 
 figure(1);
 plot3(giorni, ore, consumi, "o");
-title("Consumi delle domeniche");
+title("CONSUMI DELLE DOMENICHE");
 xlabel("Domeniche dell'anno");
 ylabel("Ore");
 zlabel("Consumi");
@@ -150,7 +150,7 @@ mesh(G, O, stima_consumi_matFF);
 grid on
 hold on
 scatter3(giorni, ore, consumi, "o");
-title("MODELLO ODI FOURIER");
+title("MODELLO DI FOURIER PACCO");
 xlabel("Domeniche dell'anno");
 ylabel("Ore");
 zlabel("Consumi");
@@ -173,7 +173,7 @@ mesh(G, O, stima_consumi_matF2);
 grid on
 hold on
 scatter3(giorni, ore, consumi, "o");
-title("Consumi delle domeniche");
+title("MODELLO DI FOURIER CRASTO");
 xlabel("Domeniche dell'anno");
 ylabel("Ore");
 zlabel("Consumi");

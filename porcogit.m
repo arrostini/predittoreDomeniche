@@ -218,7 +218,10 @@ mdlF2 = (log(n) + qF2)/n + log(ssrF2);
 %Due "%" perché mi piaceva lo sfondo giallo
 
 %bisogna inserire i consumi delle domeniche del secondo anno
-consumiVal = rendimentoValidazione;
+tab_val = readtable('caricoDEhour.xlsx', 'Range', 'A8763:D17522');
+mat_val = tab{:,:};
+solo_domeniche_val = mat(mat(:,3)==1,:);
+consumiVal = solo_domeniche_val(:,4);
 
 phiF2Val = [ones(n,1), cos(w*giorni_l), sin(w*giorni_l), cos(w*ore), sin(w*ore), cos(2*w*giorni_l), sin(2*w*giorni_l), cos(2*w*ore), sin(2*w*ore), cos(3*w*giorni_l), sin(3*w*giorni_l), cos(3*w*ore), sin(3*w*ore), cos(4*w*giorni_l), sin(4*w*giorni_l), cos(4*w*ore), sin(4*w*ore), cos(5*w*giorni_l), sin(5*w*giorni_l), cos(5*w*ore), sin(5*w*ore), cos(6*w*giorni_l), sin(6*w*giorni_l), cos(6*w*ore), sin(6*w*ore)];
 [thetalsF2Val, devthetalsF2Val] = lscov(phiF2Val, consumiVal);

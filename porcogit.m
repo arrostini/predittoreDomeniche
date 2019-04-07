@@ -71,7 +71,7 @@ mesh(G, O, stima_consumi_mat3);
 grid on
 hold on
 scatter3(giorni,ore,consumi,"o");
-title("Consumi delle domeniche");
+title("MODELLO DI TERZO ORDINE");
 xlabel("Domeniche dell'anno");
 ylabel("Ore");
 zlabel("Consumi");
@@ -88,7 +88,7 @@ mesh(G, O, stima_consumi_mat4);
 grid on
 hold on
 scatter3(giorni, ore, consumi, "o");
-title("Consumi delle domeniche");
+title("MODELLO DI QUARTO ORDINE");
 xlabel("Domeniche dell'anno");
 ylabel("Ore");
 zlabel("Consumi");
@@ -103,7 +103,7 @@ mesh(G, O, stima_consumi_mat5);
 grid on
 hold on
 scatter3(giorni, ore, consumi, "o");
-title("Consumi delle domeniche");
+title("MODELLO DI QUINTO ORDINE");
 xlabel("Domeniche dell'anno");
 ylabel("Ore");
 zlabel("Consumi");
@@ -118,7 +118,7 @@ mesh(G, O, stima_consumi_mat6);
 grid on
 hold on
 scatter3(giorni, ore, consumi, "o");
-title("Consumi delle domeniche");
+title("MODELLO DI SESTO ORDINE");
 xlabel("Domeniche dell'anno");
 ylabel("Ore");
 zlabel("Consumi");
@@ -150,7 +150,7 @@ mesh(G, O, stima_consumi_matFF);
 grid on
 hold on
 scatter3(giorni, ore, consumi, "o");
-title("Consumi delle domeniche");
+title("MODELLO ODI FOURIER");
 xlabel("Domeniche dell'anno");
 ylabel("Ore");
 zlabel("Consumi");

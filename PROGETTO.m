@@ -29,6 +29,15 @@ v = zeros(h/ore,1);
  xlabel('giorni');
  ylabel('consumo');
  title('consumo giornaliero');
+ hold on
+ b = ones(365,1)*(1/365);
+ v1 = filter(b,1,v);
+ 
+ b = [b;(zeros(size(b)))];
+ Br = [1/365 zeros(1,365) ones(1,364)/365];
+ B = toeplitz(b,Br);
+ y = B*v;
+ plot(d1,y);
  
  consumo_domeniche = zeros(104,1);
  k = 1;

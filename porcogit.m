@@ -173,7 +173,7 @@ mesh(G, O, stima_consumi_matF2);
 grid on
 hold on
 scatter3(giorni, ore, consumi, "o");
-title("MODELLO DI FOURIER CRASTO");
+title("MODELLO DI FOURIER 2");
 xlabel("Domeniche dell'anno");
 ylabel("Ore");
 zlabel("Consumi");
@@ -219,13 +219,30 @@ mdlF2 = (log(n) + qF2)/n + log(ssrF2);
 
 %bisogna inserire i consumi delle domeniche del secondo anno
 tab_val = readtable('caricoDEhour.xlsx', 'Range', 'A8763:D17522');
-mat_val = tab{:,:};
-solo_domeniche_val = mat(mat(:,3)==1,:);
+mat_val = tab_val{:,:};
+solo_domeniche_val = mat_val(mat_val(:,3)==1,:);
 consumiVal = solo_domeniche_val(:,4);
+giorni_val = solo_domeniche(:,1);
 
-phiF2Val = [ones(n,1), cos(w*giorni_l), sin(w*giorni_l), cos(w*ore), sin(w*ore), cos(2*w*giorni_l), sin(2*w*giorni_l), cos(2*w*ore), sin(2*w*ore), cos(3*w*giorni_l), sin(3*w*giorni_l), cos(3*w*ore), sin(3*w*ore), cos(4*w*giorni_l), sin(4*w*giorni_l), cos(4*w*ore), sin(4*w*ore), cos(5*w*giorni_l), sin(5*w*giorni_l), cos(5*w*ore), sin(5*w*ore), cos(6*w*giorni_l), sin(6*w*giorni_l), cos(6*w*ore), sin(6*w*ore)];
-[thetalsF2Val, devthetalsF2Val] = lscov(phiF2Val, consumiVal);
-epsilonF2Val = consumiVal - phiF2Val * thetalsF2Val;
-stima_consumiF2Val = phiF2Val * thetalsF2Val;
+phiF2Val = [ones(n,1), cos(w*giorni_val), sin(w*giorni_val), cos(w*ore), sin(w*ore), cos(2*w*giorni_val), sin(2*w*giorni_val), cos(2*w*ore), sin(2*w*ore), cos(3*w*giorni_val), sin(3*w*giorni_val), cos(3*w*ore), sin(3*w*ore), cos(4*w*giorni_val), sin(4*w*giorni_val), cos(4*w*ore), sin(4*w*ore), cos(5*w*giorni_val), sin(5*w*giorni_val), cos(5*w*ore), sin(5*w*ore), cos(6*w*giorni_val), sin(6*w*giorni_val), cos(6*w*ore), sin(6*w*ore)];
+%[thetalsF2_val, devthetalsF2Val] = (phiF2Val, consumiVal);
+epsilonF2Val = consumiVal - phiF2Val * thetalsF2;
+stima_consumiF2Val = phiF2Val * thetalsF2;
 ssrF2Val = epsilonF2Val' * epsilonF2Val;
-qF2Val = length(thetalsF2Val);
+qF2Val = length(thetalsF2);
+
+%modello esteso di crossvalidazione
+
+phiF2_ext_val = [ones(n1,1), cos(w*G(:)), sin(w*G(:)), cos(w*O(:)), sin(w*O(:)), cos(2*w*G(:)), sin(2*w*G(:)), cos(2*w*O(:)), sin(2*w*O(:)), cos(3*w*G(:)), sin(3*w*G(:)), cos(3*w*O(:)), sin(3*w*O(:)), cos(4*w*G(:)), sin(4*w*G(:)), cos(4*w*O(:)), sin(4*w*O(:)), cos(5*w*G(:)), sin(5*w*G(:)), cos(5*w*O(:)), sin(5*w*O(:)), cos(6*w*G(:)), sin(6*w*G(:)), cos(6*w*O(:)), sin(6*w*O(:))];
+stima_consumi_extF2_val = phiF2_ext_val * thetalsF2;
+stima_consumi_matF2_val = reshape(stima_consumi_extF2_val, size(G));
+
+figure(9);
+mesh(G, O, stima_consumi_matF2_val);
+grid on
+hold on
+scatter3(giorni, ore, consumiVal, "o");
+title("MODELLO DI FOURIER 2 VAL");
+xlabel("Domeniche dell'anno");
+ylabel("Ore");
+zlabel("Consumi");

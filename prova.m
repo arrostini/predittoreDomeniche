@@ -7,25 +7,28 @@ tab = readtable('caricoDEhour.xlsx', 'Range','A2:D8762');
 mat = tab{:,:};
 solo_domeniche = mat(mat(:,3)==1,:); %prendo le righe dove la terza colonna é uguale a 1
 
-consumi = solo_domeniche(:,4);
-ore= solo_domeniche(:,2);
+consumi = solo_domeniche(:, 4);
+ore= solo_domeniche(:, 2);
 n = length(consumi);
-giorni = (linspace(1,365,n))';
+giorni = (linspace(1, 365, n))';
 
 %MODELLO DI PRIMO ORDINE PER IL TREND ANNUALE
-phi1 = [ones(n,1), giorni];
+phi1 = [ones(n, 1), giorni];
 [thetals1, devthetals1] = lscov(phi1, consumi);
 epsilon1 = consumi - phi1 * thetals1;
 stima_consumi1 = phi1 * thetals1;
 ssr1 = epsilon1' * epsilon1;
 q1 = length(thetals1);
 
-consumi_nuovi = consumi-stima_consumi1;
+consumi_nuovi = consumi - stima_consumi1;
 figure(1);
-scatter(giorni,consumi,'.');
+scatter(giorni, consumi, '.');
 hold on
-scatter(giorni,consumi_nuovi,'.');
-legend('consumi originali', 'consumi detrendizzati', 'Location','west');
+scatter(giorni, consumi_nuovi, '.');
+legend('consumi originali', 'consumi detrendizzati', 'Location','west', 'FontSize', 15);
+legend('boxoff');
+xlabel("Giorni dell' anno", 'FontSize', 14);
+ylabel('Consumi in MWatt', 'FontSize', 14);
 grid on
 hold off;
 
@@ -52,22 +55,22 @@ mesh(G, O, stima_consumi_matF2);
 grid on
 hold on
 scatter3(giorni, ore, consumi_nuovi, "o");
-title("MODELLO DI FOURIER 2");
-xlabel("Domeniche dell'anno");
-ylabel("Ore");
-zlabel("Consumi");
+title("MODELLO DI FOURIER 2", 'FontSize', 15);
+xlabel("Domeniche dell'anno", 'FontSize', 13);
+ylabel("Ore", 'FontSize', 13);
+zlabel("Consumi", 'FontSize', 13);
 
-%validazione
+%VALIDAZIONE
 
 tab_val = readtable('caricoDEhour.xlsx', 'Range', 'A8763:D17522');
 mat_val = tab_val{:,:};
 solo_domeniche_val = mat_val(mat_val(:,3)==1,:);
 consumiVal = solo_domeniche_val(:,4);
-giorni_val = (linspace(1,365,n))';
+giorni_val = (linspace(1, 365, n))';
 
 %MODELLO DI PRIMO ORDINE PER IL TREND VAL
 
-phi1_val = [ones(n,1), giorni_val];
+phi1_val = [ones(n, 1), giorni_val];
 [thetals1_val, devthetals1_val] = lscov(phi1_val, consumiVal);
 epsilon1_val = consumiVal - phi1_val * thetals1_val;
 stima_consumi1_val = phi1_val * thetals1_val;
@@ -76,7 +79,7 @@ q1_val = length(thetals1_val);
 
 consumi_nuovi_val = consumiVal - stima_consumi1_val;
 
-%modello f2 val
+%MODELLO F2 VAL
 phiF2Val = [cos(w*giorni_val), sin(w*giorni_val), cos(w*ore), sin(w*ore), cos(2*w*giorni_val), sin(2*w*giorni_val), cos(2*w*ore), sin(2*w*ore), cos(3*w*giorni_val), sin(3*w*giorni_val), cos(3*w*ore), sin(3*w*ore), cos(4*w*giorni_val), sin(4*w*giorni_val), cos(4*w*ore), sin(4*w*ore), cos(5*w*giorni_val), sin(5*w*giorni_val), cos(5*w*ore), sin(5*w*ore), cos(6*w*giorni_val), sin(6*w*giorni_val), cos(6*w*ore), sin(6*w*ore), cos(7*w*giorni_val), sin(7*w*giorni_val), cos(7*w*ore), sin(7*w*ore), cos(8*w*ore), sin(8*w*ore)];
 epsilonF2Val = consumi_nuovi_val - (phiF2Val) * thetalsF2;
 stima_consumiF2Val = phiF2Val * thetalsF2;
@@ -92,12 +95,12 @@ mesh(G, O, stima_consumi_matF2_val);
 grid on
 hold on
 scatter3(giorni_val, ore, consumi_nuovi_val, "o");
-title("MODELLO DI FOURIER 2 VAL");
-xlabel("Domeniche dell'anno");
-ylabel("Ore");
-zlabel("Consumi");
+title("MODELLO DI FOURIER 2 VAL", 'FontSize', 15);
+xlabel("Domeniche dell'anno", 'FontSize', 13);
+ylabel("Ore", 'FontSize', 13);
+zlabel("Consumi", 'FontSize', 13);
 
-%modelli di f2 con numeri diversi di armoniche.
+%MODELLI DI F2 CON NUMERI DIVERSI DI ARMONICHE.
 %4 ARMONICHE
 phiF2_4 = [cos(w*giorni), sin(w*giorni), cos(w*ore), sin(w*ore)];
 [thetalsF2_4, devthetalsF2_4] = lscov(phiF2_4, consumi_nuovi);
@@ -199,15 +202,16 @@ epsilonF2Val40 = consumi_nuovi_val - (phiF2Val40) * thetalsF2_40;
 ssrF2Val40 = epsilonF2Val40' * epsilonF2Val40;
 
 
-%plot degli ssr
+%PLOT DEGLI SST
 ssrVal = [ssrF2Val4, ssrF2Val8, ssrF2Val12, ssrF2Val16, ssrF2Val20, ssrF2Val24, ssrF2Val28, ssrF2Val32, ssrF2Val36, ssrF2Val40];
 ssr = [ssrF2_4, ssrF2_8, ssrF2_12, ssrF2_16, ssrF2_20, ssrF2_24, ssrF2_28, ssrF2_32, ssrF2_36, ssrF2_40];
-x = linspace(4,40,10);
+x = linspace(4, 40, 10);
 figure(3)
-plot(x,ssrVal);
+plot(x, ssrVal);
 grid on
 hold on
-plot(x,ssr);
-legend('modello di validazione','modello di identificazione');
-xlabel('armoniche');
-ylabel('ssr');
+plot(x, ssr);
+legend('modello di validazione','modello di identificazione', 'FontSize', 14);
+legend('boxoff');
+xlabel('armoniche', 'FontSize', 15);
+ylabel('SSR', 'FontSize', 15);

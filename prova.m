@@ -23,9 +23,9 @@ q1 = length(thetals1);
 consumi_nuovi = consumi-stima_consumi1;
 figure(1);
 scatter(giorni,consumi,'.');
-legend('consumi originali');
 hold on
 scatter(giorni,consumi_nuovi,'.');
+legend('consumi originali', 'consumi detrendizzati', 'Location','west');
 grid on
 hold off;
 

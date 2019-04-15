@@ -17,6 +17,14 @@ grid on;
 
 
 n = length(consumi);
+
+phi1= [ones(n,1) giorni ore];
+[thetals1, devthetals1]= lscov(phi1, consumi);
+epsilon1 = consumi - phi1*thetals1;
+stima_consumi1 = phi1*thetals1;
+ssr1 = epsilon1'*epsilon1;
+q1 = length(thetals1);
+
 phi3= [ones(n,1) giorni ore giorni.^2 ore.^2 giorni.*ore giorni.^3 ore.^3 (giorni.^2).*ore (ore.^2).*giorni];
 [thetals3, devthetals3]= lscov(phi3, consumi);
 epsilon3 = consumi - phi3*thetals3;

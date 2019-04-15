@@ -12,8 +12,7 @@ ore= solo_domeniche(:,2);
 n = length(consumi);
 giorni = (linspace(1,365,n))';
 
-%MODELLO DI PRIMO ORDINE PER IL TREND
-
+%MODELLO DI PRIMO ORDINE PER IL TREND ANNUALE
 phi1 = [ones(n,1), giorni];
 [thetals1, devthetals1] = lscov(phi1, consumi);
 epsilon1 = consumi - phi1 * thetals1;
@@ -24,6 +23,7 @@ q1 = length(thetals1);
 consumi_nuovi = consumi-stima_consumi1;
 figure(1);
 scatter(giorni,consumi,'.');
+legend('consumi originali');
 hold on
 scatter(giorni,consumi_nuovi,'.');
 grid on

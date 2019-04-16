@@ -297,12 +297,35 @@ aicF2_52 = (2*qF2_52)/n + log(ssrF2_52);
 aicF2_56 = (2*qF2_56)/n + log(ssrF2_56);
 aicF2_60 = (2*qF2_60)/n + log(ssrF2_60);
 
+%TEST AIC VAL
+aicF2Val4 = (2*qF2_4)/n + log(ssrF2Val4);
+aicF2Val8 = (2*qF2_8)/n + log(ssrF2Val8);
+aicF2Val12 = (2*qF2_12)/n + log(ssrF2Val12);
+aicF2Val16 = (2*qF2_16)/n + log(ssrF2Val16);
+aicF2Val20 = (2*qF2_20)/n + log(ssrF2Val20);
+aicF2Val24 = (2*qF2_24)/n + log(ssrF2Val24);
+aicF2Val28 = (2*qF2_28)/n + log(ssrF2Val28);
+aicF2Val32 = (2*qF2_32)/n + log(ssrF2Val32);
+aicF2Val36 = (2*qF2_36)/n + log(ssrF2Val36);
+aicF2Val40 = (2*qF2_40)/n + log(ssrF2Val40);
+aicF2Val44 = (2*qF2_44)/n + log(ssrF2Val44);
+aicF2Val48 = (2*qF2_48)/n + log(ssrF2Val48);
+aicF2Val52 = (2*qF2_52)/n + log(ssrF2Val52);
+aicF2Val56 = (2*qF2_56)/n + log(ssrF2Val56);
+aicF2Val60 = (2*qF2_60)/n + log(ssrF2Val60);
+
+
 aic = [aicF2_4, aicF2_8, aicF2_12, aicF2_16, aicF2_20, aicF2_24, aicF2_28, aicF2_32, aicF2_36, aicF2_40, aicF2_44, aicF2_48, aicF2_52, aicF2_56, aicF2_60];
+aicVal = [aicF2Val4, aicF2Val8, aicF2Val12, aicF2Val16, aicF2Val20, aicF2Val24, aicF2Val28, aicF2Val32, aicF2Val36, aicF2Val40, aicF2Val44, aicF2Val48, aicF2Val52, aicF2Val56, aicF2Val60];
+
 figure(4)
 plot(x, aic);
 grid on
 hold on
+plot(x, aicVal);
 title('TEST AIC', 'FontSize', 15);
+legend('modello di identificazione','modello di validazione');
+legend('boxoff');
 xlabel('armoniche');
 ylabel('AIC');
 

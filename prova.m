@@ -200,11 +200,60 @@ phiF2Val40 = [cos(w*giorni_val), sin(w*giorni_val), cos(w*ore), sin(w*ore), cos(
 epsilonF2Val40 = consumi_nuovi_val - (phiF2Val40) * thetalsF2_40;
 ssrF2Val40 = epsilonF2Val40' * epsilonF2Val40;
 
+%44 ARMONICHE
+phiF2_44 = [cos(w*giorni), sin(w*giorni), cos(w*ore), sin(w*ore), cos(2*w*giorni), sin(2*w*giorni), cos(2*w*ore), sin(2*w*ore), cos(3*w*giorni), sin(3*w*giorni), cos(3*w*ore), sin(3*w*ore), cos(4*w*giorni), sin(4*w*giorni), cos(4*w*ore), sin(4*w*ore), cos(5*w*giorni), sin(5*w*giorni), cos(5*w*ore), sin(5*w*ore), cos(6*w*giorni), sin(6*w*giorni), cos(6*w*ore), sin(6*w*ore), cos(7*w*giorni), sin(7*w*giorni), cos(7*w*ore), sin(7*w*ore), cos(8*w*giorni), sin(8*w*giorni), cos(8*w*ore), sin(8*w*ore), cos(9*w*giorni), sin(9*w*giorni), cos(9*w*ore), sin(9*w*ore), cos(10*w*giorni), sin(10*w*giorni), cos(10*w*ore), sin(10*w*ore), cos(11*w*giorni), sin(11*w*giorni), cos(11*w*ore), sin(11*w*ore)];
+[thetalsF2_44, devthetalsF2_44] = lscov(phiF2_44, consumi_nuovi);
+epsilonF2_44 = consumi_nuovi - phiF2_44 * thetalsF2_44;
+ssrF2_44 = epsilonF2_44' * epsilonF2_44;
+
+phiF2Val44 = [cos(w*giorni_val), sin(w*giorni_val), cos(w*ore), sin(w*ore), cos(2*w*giorni_val), sin(2*w*giorni_val), cos(2*w*ore), sin(2*w*ore), cos(3*w*giorni_val), sin(3*w*giorni_val), cos(3*w*ore), sin(3*w*ore), cos(4*w*giorni_val), sin(4*w*giorni_val), cos(4*w*ore), sin(4*w*ore), cos(5*w*giorni_val), sin(5*w*giorni_val), cos(5*w*ore), sin(5*w*ore), cos(6*w*giorni_val), sin(6*w*giorni_val), cos(6*w*ore), sin(6*w*ore), cos(7*w*giorni_val), sin(7*w*giorni_val), cos(7*w*ore), sin(7*w*ore), cos(8*w*giorni_val), sin(8*w*giorni_val), cos(8*w*ore), sin(8*w*ore), cos(9*w*giorni_val), sin(9*w*giorni_val), cos(9*w*ore), sin(9*w*ore), cos(10*w*giorni_val), sin(10*w*giorni_val), cos(10*w*ore), sin(10*w*ore), cos(11*w*giorni_val), sin(11*w*giorni_val), cos(11*w*ore), sin(11*w*ore)];
+epsilonF2Val44 = consumi_nuovi_val - (phiF2Val44) * thetalsF2_44;
+ssrF2Val44 = epsilonF2Val44' * epsilonF2Val44;
+
+%48 ARMONICHE
+phiF2_48 = [cos(w*giorni), sin(w*giorni), cos(w*ore), sin(w*ore), cos(2*w*giorni), sin(2*w*giorni), cos(2*w*ore), sin(2*w*ore), cos(3*w*giorni), sin(3*w*giorni), cos(3*w*ore), sin(3*w*ore), cos(4*w*giorni), sin(4*w*giorni), cos(4*w*ore), sin(4*w*ore), cos(5*w*giorni), sin(5*w*giorni), cos(5*w*ore), sin(5*w*ore), cos(6*w*giorni), sin(6*w*giorni), cos(6*w*ore), sin(6*w*ore), cos(7*w*giorni), sin(7*w*giorni), cos(7*w*ore), sin(7*w*ore), cos(8*w*giorni), sin(8*w*giorni), cos(8*w*ore), sin(8*w*ore), cos(9*w*giorni), sin(9*w*giorni), cos(9*w*ore), sin(9*w*ore), cos(10*w*giorni), sin(10*w*giorni), cos(10*w*ore), sin(10*w*ore), cos(11*w*giorni), sin(11*w*giorni), cos(11*w*ore), sin(11*w*ore), cos(12*w*giorni), sin(12*w*giorni), cos(12*w*ore), sin(12*w*ore)];
+[thetalsF2_48, devthetalsF2_48] = lscov(phiF2_48, consumi_nuovi);
+epsilonF2_48 = consumi_nuovi - phiF2_48 * thetalsF2_48;
+ssrF2_48 = epsilonF2_48' * epsilonF2_48;
+
+phiF2Val48 = [cos(w*giorni_val), sin(w*giorni_val), cos(w*ore), sin(w*ore), cos(2*w*giorni_val), sin(2*w*giorni_val), cos(2*w*ore), sin(2*w*ore), cos(3*w*giorni_val), sin(3*w*giorni_val), cos(3*w*ore), sin(3*w*ore), cos(4*w*giorni_val), sin(4*w*giorni_val), cos(4*w*ore), sin(4*w*ore), cos(5*w*giorni_val), sin(5*w*giorni_val), cos(5*w*ore), sin(5*w*ore), cos(6*w*giorni_val), sin(6*w*giorni_val), cos(6*w*ore), sin(6*w*ore), cos(7*w*giorni_val), sin(7*w*giorni_val), cos(7*w*ore), sin(7*w*ore), cos(8*w*giorni_val), sin(8*w*giorni_val), cos(8*w*ore), sin(8*w*ore), cos(9*w*giorni_val), sin(9*w*giorni_val), cos(9*w*ore), sin(9*w*ore), cos(10*w*giorni_val), sin(10*w*giorni_val), cos(10*w*ore), sin(10*w*ore), cos(11*w*giorni_val), sin(11*w*giorni_val), cos(11*w*ore), sin(11*w*ore), cos(12*w*giorni_val), sin(12*w*giorni_val), cos(12*w*ore), sin(12*w*ore)];
+epsilonF2Val48 = consumi_nuovi_val - (phiF2Val48) * thetalsF2_48;
+ssrF2Val48 = epsilonF2Val48' * epsilonF2Val48;
+
+%52 ARMONICHE
+phiF2_52 = [cos(w*giorni), sin(w*giorni), cos(w*ore), sin(w*ore), cos(2*w*giorni), sin(2*w*giorni), cos(2*w*ore), sin(2*w*ore), cos(3*w*giorni), sin(3*w*giorni), cos(3*w*ore), sin(3*w*ore), cos(4*w*giorni), sin(4*w*giorni), cos(4*w*ore), sin(4*w*ore), cos(5*w*giorni), sin(5*w*giorni), cos(5*w*ore), sin(5*w*ore), cos(6*w*giorni), sin(6*w*giorni), cos(6*w*ore), sin(6*w*ore), cos(7*w*giorni), sin(7*w*giorni), cos(7*w*ore), sin(7*w*ore), cos(8*w*giorni), sin(8*w*giorni), cos(8*w*ore), sin(8*w*ore), cos(9*w*giorni), sin(9*w*giorni), cos(9*w*ore), sin(9*w*ore), cos(10*w*giorni), sin(10*w*giorni), cos(10*w*ore), sin(10*w*ore), cos(11*w*giorni), sin(11*w*giorni), cos(11*w*ore), sin(11*w*ore), cos(12*w*giorni), sin(12*w*giorni), cos(12*w*ore), sin(12*w*ore), cos(13*w*giorni), sin(13*w*giorni), cos(13*w*ore), sin(13*w*ore)];
+[thetalsF2_52, devthetalsF2_52] = lscov(phiF2_52, consumi_nuovi);
+epsilonF2_52 = consumi_nuovi - phiF2_52 * thetalsF2_52;
+ssrF2_52 = epsilonF2_52' * epsilonF2_52;
+
+phiF2Val52 = [cos(w*giorni_val), sin(w*giorni_val), cos(w*ore), sin(w*ore), cos(2*w*giorni_val), sin(2*w*giorni_val), cos(2*w*ore), sin(2*w*ore), cos(3*w*giorni_val), sin(3*w*giorni_val), cos(3*w*ore), sin(3*w*ore), cos(4*w*giorni_val), sin(4*w*giorni_val), cos(4*w*ore), sin(4*w*ore), cos(5*w*giorni_val), sin(5*w*giorni_val), cos(5*w*ore), sin(5*w*ore), cos(6*w*giorni_val), sin(6*w*giorni_val), cos(6*w*ore), sin(6*w*ore), cos(7*w*giorni_val), sin(7*w*giorni_val), cos(7*w*ore), sin(7*w*ore), cos(8*w*giorni_val), sin(8*w*giorni_val), cos(8*w*ore), sin(8*w*ore), cos(9*w*giorni_val), sin(9*w*giorni_val), cos(9*w*ore), sin(9*w*ore), cos(10*w*giorni_val), sin(10*w*giorni_val), cos(10*w*ore), sin(10*w*ore), cos(11*w*giorni_val), sin(11*w*giorni_val), cos(11*w*ore), sin(11*w*ore), cos(12*w*giorni_val), sin(12*w*giorni_val), cos(12*w*ore), sin(12*w*ore), cos(13*w*giorni_val), sin(13*w*giorni_val), cos(13*w*ore), sin(13*w*ore)];
+epsilonF2Val52 = consumi_nuovi_val - (phiF2Val52) * thetalsF2_52;
+ssrF2Val52 = epsilonF2Val52' * epsilonF2Val52;
+
+%56 ARMONICHE
+phiF2_56 = [cos(w*giorni), sin(w*giorni), cos(w*ore), sin(w*ore), cos(2*w*giorni), sin(2*w*giorni), cos(2*w*ore), sin(2*w*ore), cos(3*w*giorni), sin(3*w*giorni), cos(3*w*ore), sin(3*w*ore), cos(4*w*giorni), sin(4*w*giorni), cos(4*w*ore), sin(4*w*ore), cos(5*w*giorni), sin(5*w*giorni), cos(5*w*ore), sin(5*w*ore), cos(6*w*giorni), sin(6*w*giorni), cos(6*w*ore), sin(6*w*ore), cos(7*w*giorni), sin(7*w*giorni), cos(7*w*ore), sin(7*w*ore), cos(8*w*giorni), sin(8*w*giorni), cos(8*w*ore), sin(8*w*ore), cos(9*w*giorni), sin(9*w*giorni), cos(9*w*ore), sin(9*w*ore), cos(10*w*giorni), sin(10*w*giorni), cos(10*w*ore), sin(10*w*ore), cos(11*w*giorni), sin(11*w*giorni), cos(11*w*ore), sin(11*w*ore), cos(12*w*giorni), sin(12*w*giorni), cos(12*w*ore), sin(12*w*ore), cos(13*w*giorni), sin(13*w*giorni), cos(13*w*ore), sin(13*w*ore), cos(14*w*giorni), sin(14*w*giorni), cos(14*w*ore), sin(14*w*ore)];
+[thetalsF2_56, devthetalsF2_56] = lscov(phiF2_56, consumi_nuovi);
+epsilonF2_56 = consumi_nuovi - phiF2_56 * thetalsF2_56;
+ssrF2_56 = epsilonF2_56' * epsilonF2_56;
+
+phiF2Val56 = [cos(w*giorni_val), sin(w*giorni_val), cos(w*ore), sin(w*ore), cos(2*w*giorni_val), sin(2*w*giorni_val), cos(2*w*ore), sin(2*w*ore), cos(3*w*giorni_val), sin(3*w*giorni_val), cos(3*w*ore), sin(3*w*ore), cos(4*w*giorni_val), sin(4*w*giorni_val), cos(4*w*ore), sin(4*w*ore), cos(5*w*giorni_val), sin(5*w*giorni_val), cos(5*w*ore), sin(5*w*ore), cos(6*w*giorni_val), sin(6*w*giorni_val), cos(6*w*ore), sin(6*w*ore), cos(7*w*giorni_val), sin(7*w*giorni_val), cos(7*w*ore), sin(7*w*ore), cos(8*w*giorni_val), sin(8*w*giorni_val), cos(8*w*ore), sin(8*w*ore), cos(9*w*giorni_val), sin(9*w*giorni_val), cos(9*w*ore), sin(9*w*ore), cos(10*w*giorni_val), sin(10*w*giorni_val), cos(10*w*ore), sin(10*w*ore), cos(11*w*giorni_val), sin(11*w*giorni_val), cos(11*w*ore), sin(11*w*ore), cos(12*w*giorni_val), sin(12*w*giorni_val), cos(12*w*ore), sin(12*w*ore), cos(13*w*giorni_val), sin(13*w*giorni_val), cos(13*w*ore), sin(13*w*ore), cos(14*w*giorni_val), sin(14*w*giorni_val), cos(14*w*ore), sin(14*w*ore)];
+epsilonF2Val56 = consumi_nuovi_val - (phiF2Val56) * thetalsF2_56;
+ssrF2Val56 = epsilonF2Val56' * epsilonF2Val56;
+
+%60 ARMONICHE
+phiF2_60 = [cos(w*giorni), sin(w*giorni), cos(w*ore), sin(w*ore), cos(2*w*giorni), sin(2*w*giorni), cos(2*w*ore), sin(2*w*ore), cos(3*w*giorni), sin(3*w*giorni), cos(3*w*ore), sin(3*w*ore), cos(4*w*giorni), sin(4*w*giorni), cos(4*w*ore), sin(4*w*ore), cos(5*w*giorni), sin(5*w*giorni), cos(5*w*ore), sin(5*w*ore), cos(6*w*giorni), sin(6*w*giorni), cos(6*w*ore), sin(6*w*ore), cos(7*w*giorni), sin(7*w*giorni), cos(7*w*ore), sin(7*w*ore), cos(8*w*giorni), sin(8*w*giorni), cos(8*w*ore), sin(8*w*ore), cos(9*w*giorni), sin(9*w*giorni), cos(9*w*ore), sin(9*w*ore), cos(10*w*giorni), sin(10*w*giorni), cos(10*w*ore), sin(10*w*ore), cos(11*w*giorni), sin(11*w*giorni), cos(11*w*ore), sin(11*w*ore), cos(12*w*giorni), sin(12*w*giorni), cos(12*w*ore), sin(12*w*ore), cos(13*w*giorni), sin(13*w*giorni), cos(13*w*ore), sin(13*w*ore), cos(14*w*giorni), sin(14*w*giorni), cos(14*w*ore), sin(14*w*ore), cos(15*w*giorni), sin(15*w*giorni), cos(15*w*ore), sin(15*w*ore)];
+[thetalsF2_60, devthetalsF2_60] = lscov(phiF2_60, consumi_nuovi);
+epsilonF2_60 = consumi_nuovi - phiF2_60 * thetalsF2_60;
+ssrF2_60 = epsilonF2_60' * epsilonF2_60;
+
+phiF2Val60 = [cos(w*giorni_val), sin(w*giorni_val), cos(w*ore), sin(w*ore), cos(2*w*giorni_val), sin(2*w*giorni_val), cos(2*w*ore), sin(2*w*ore), cos(3*w*giorni_val), sin(3*w*giorni_val), cos(3*w*ore), sin(3*w*ore), cos(4*w*giorni_val), sin(4*w*giorni_val), cos(4*w*ore), sin(4*w*ore), cos(5*w*giorni_val), sin(5*w*giorni_val), cos(5*w*ore), sin(5*w*ore), cos(6*w*giorni_val), sin(6*w*giorni_val), cos(6*w*ore), sin(6*w*ore), cos(7*w*giorni_val), sin(7*w*giorni_val), cos(7*w*ore), sin(7*w*ore), cos(8*w*giorni_val), sin(8*w*giorni_val), cos(8*w*ore), sin(8*w*ore), cos(9*w*giorni_val), sin(9*w*giorni_val), cos(9*w*ore), sin(9*w*ore), cos(10*w*giorni_val), sin(10*w*giorni_val), cos(10*w*ore), sin(10*w*ore), cos(11*w*giorni_val), sin(11*w*giorni_val), cos(11*w*ore), sin(11*w*ore), cos(12*w*giorni_val), sin(12*w*giorni_val), cos(12*w*ore), sin(12*w*ore), cos(13*w*giorni_val), sin(13*w*giorni_val), cos(13*w*ore), sin(13*w*ore), cos(14*w*giorni_val), sin(14*w*giorni_val), cos(14*w*ore), sin(14*w*ore), cos(15*w*giorni_val), sin(15*w*giorni_val), cos(15*w*ore), sin(15*w*ore)];
+epsilonF2Val60 = consumi_nuovi_val - (phiF2Val60) * thetalsF2_60;
+ssrF2Val60 = epsilonF2Val60' * epsilonF2Val60;
 
 %PLOT DEGLI SSR
-ssrVal = [ssrF2Val4, ssrF2Val8, ssrF2Val12, ssrF2Val16, ssrF2Val20, ssrF2Val24, ssrF2Val28, ssrF2Val32, ssrF2Val36, ssrF2Val40];
-ssr = [ssrF2_4, ssrF2_8, ssrF2_12, ssrF2_16, ssrF2_20, ssrF2_24, ssrF2_28, ssrF2_32, ssrF2_36, ssrF2_40];
-x = linspace(4, 40, 10);
+ssrVal = [ssrF2Val4, ssrF2Val8, ssrF2Val12, ssrF2Val16, ssrF2Val20, ssrF2Val24, ssrF2Val28, ssrF2Val32, ssrF2Val36, ssrF2Val40, ssrF2Val44, ssrF2Val48, ssrF2Val52, ssrF2Val56, ssrF2Val60];
+ssr = [ssrF2_4, ssrF2_8, ssrF2_12, ssrF2_16, ssrF2_20, ssrF2_24, ssrF2_28, ssrF2_32, ssrF2_36, ssrF2_40, ssrF2_44, ssrF2_48, ssrF2_52, ssrF2_56, ssrF2_60];
+x = linspace(4, 60, 15);
 figure(3)
 plot(x, ssrVal);
 grid on

@@ -271,11 +271,11 @@ ssrVal = [ssrF2Val4, ssrF2Val8, ssrF2Val12, ssrF2Val16, ssrF2Val20, ssrF2Val24, 
 ssr = [ssrF2_4, ssrF2_8, ssrF2_12, ssrF2_16, ssrF2_20, ssrF2_24, ssrF2_28, ssrF2_32, ssrF2_36, ssrF2_40, ssrF2_44, ssrF2_48, ssrF2_52, ssrF2_56, ssrF2_60];
 x = linspace(4, 60, 15);
 figure(3)
-plot(x, ssrVal);
+plot(x, ssr);
 grid on
 hold on
-plot(x, ssr);
-legend('modello di validazione','modello di identificazione');
+plot(x, ssrVal);
+legend('modello di identificazione','modello di validazione');
 legend('boxoff');
 xlabel('armoniche', 'FontSize', 15);
 ylabel('SSR', 'FontSize', 15);

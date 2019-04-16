@@ -25,8 +25,7 @@ figure(1);
 scatter(giorni, consumi, '.');
 hold on
 scatter(giorni, consumi_nuovi, '.');
-legend('consumi originali', 'consumi detrendizzati', 'Location','west', 'FontSize', 15);
-legend('boxoff');
+legend('consumi originali', 'consumi detrendizzati');
 xlabel("Giorni dell' anno", 'FontSize', 14);
 ylabel('Consumi in MWatt', 'FontSize', 14);
 grid on
@@ -202,7 +201,7 @@ epsilonF2Val40 = consumi_nuovi_val - (phiF2Val40) * thetalsF2_40;
 ssrF2Val40 = epsilonF2Val40' * epsilonF2Val40;
 
 
-%PLOT DEGLI SST
+%PLOT DEGLI SSR
 ssrVal = [ssrF2Val4, ssrF2Val8, ssrF2Val12, ssrF2Val16, ssrF2Val20, ssrF2Val24, ssrF2Val28, ssrF2Val32, ssrF2Val36, ssrF2Val40];
 ssr = [ssrF2_4, ssrF2_8, ssrF2_12, ssrF2_16, ssrF2_20, ssrF2_24, ssrF2_28, ssrF2_32, ssrF2_36, ssrF2_40];
 x = linspace(4, 40, 10);
@@ -211,7 +210,7 @@ plot(x, ssrVal);
 grid on
 hold on
 plot(x, ssr);
-legend('modello di validazione','modello di identificazione', 'FontSize', 14);
+legend('modello di validazione','modello di identificazione');
 legend('boxoff');
 xlabel('armoniche', 'FontSize', 15);
 ylabel('SSR', 'FontSize', 15);

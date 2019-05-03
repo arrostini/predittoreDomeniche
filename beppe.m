@@ -56,9 +56,11 @@ media_consumi_detrendizzati = (consumi_nuovi_1 + consumi_nuovi_2)./2;
 media_consumi = media_consumi_detrendizzati + trend_previsto; 
 
 %Modello
-w = 2 * pi / 365;
+wg = 2 * pi / 365;
+wo = 2 * pi / 24;
+
 ore= solo_domeniche(:,2);
-phiFourier = [cos(w*giorni1), sin(w*giorni1), cos(w*ore), sin(w*ore), cos(2*w*giorni1), sin(2*w*giorni1), cos(2*w*ore), sin(2*w*ore), cos(3*w*giorni1), sin(3*w*giorni1), cos(3*w*ore), sin(3*w*ore), cos(4*w*giorni1), sin(4*w*giorni1), cos(4*w*ore), sin(4*w*ore), cos(5*w*giorni1), sin(5*w*giorni1), cos(5*w*ore), sin(5*w*ore), cos(6*w*giorni1), sin(6*w*giorni1), cos(6*w*ore), sin(6*w*ore),  cos(7*w*giorni1), sin(7*w*giorni1), cos(7*w*ore), sin(7*w*ore), cos(8*w*ore), sin(8*w*ore)];
+phiFourier = [cos(wg*giorni1), sin(wg*giorni1), cos(wo*ore), sin(wo*ore), cos(2*wg*giorni1), sin(2*wg*giorni1), cos(2*wo*ore), sin(2*wo*ore), cos(3*wg*giorni1), sin(3*wg*giorni1), cos(3*wo*ore), sin(3*wo*ore), cos(4*wg*giorni1), sin(4*wg*giorni1), cos(4*wo*ore), sin(4*wo*ore), cos(5*wg*giorni1), sin(5*wg*giorni1), cos(5*wo*ore), sin(5*wo*ore), cos(6*wg*giorni1), sin(6*wg*giorni1), cos(6*wo*ore), sin(6*wo*ore),  cos(7*wg*giorni1), sin(7*wg*giorni1), cos(7*wo*ore), sin(7*wo*ore), cos(8*wo*ore), sin(8*wo*ore)];
 [thetalsFourier, devthetalsFourier] = lscov(phiFourier, media_consumi_detrendizzati);
 %epsilonFourier = consumi - (phiFourier * thetalsFourier + stima_consumi1);
 stima_consumi = phiFourier * thetalsFourier + trend_previsto;

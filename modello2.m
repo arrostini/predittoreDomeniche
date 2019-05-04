@@ -2,7 +2,7 @@ clc
 close all
 clear
  
-tab = readtable('caricoDEhour.xlsx', 'Range','A8763:D17522');
+tab = readtable('caricoDEhour.xlsx', 'Range','A2:D8762');
 mat = tab{:,:};
 solo_domeniche = mat(mat(:,3)==1,:);
 mediaOraria= zeros(1,24);
@@ -34,7 +34,8 @@ figure(1)
 plot(1:1:24, consumiOrariModel);
 
  
-tab = readtable('caricoDEhour.xlsx', 'Range','A2:D8762');
+tab = readtable('caricoDEhour.xlsx', 'Range','A8763:D17522');
+
 mat = tab{:,:};
 solo_domenicheVal = mat(mat(:,3)==1,:);
 mediaOrariaVal= zeros(1,24);

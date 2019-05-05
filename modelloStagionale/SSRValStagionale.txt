@@ -1,0 +1,17 @@
+Usando il primo anno come validazione e secondo come identificazione:
+9 e 5    3.5977e+09
+8 e 5    3.6045e+09
+10 e 5 	 3.5967e+09
+11 e 5   3.5927e+09 
+12 e 5   3.5929e+09  => 11 numero armoniche migliore per le ore 
+
+11 e 6   3.5950e+09
+11 e 4   3.8832e+09  => 5 numero armoniche migliore per i giorni
+
+Usando il secondo anno come validazione e il primo come identificazione:
+10 e 6  3.3668e+09
+10 e 5  3.2715e+09 
+10 e 4  3.3077e+09  =>5 numero armoniche migliore per i giorni
+
+9 e 5   3.2710e+09  
+8 e 5   3.2783e+09  =>9 numero armoniche migliore per le ore

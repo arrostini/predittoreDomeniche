@@ -25,7 +25,9 @@ figure(1);
 scatter(giorni, consumi, '.');
 hold on
 scatter(giorni, consumi_nuovi, '.');
-legend('consumi originali', 'consumi detrendizzati');
+legend('consumi originali', 'consumi detrendizzati', 'Location', 'west');
+
+
 xlabel("Giorni dell' anno", 'FontSize', 14);
 ylabel('Consumi in MWatt', 'FontSize', 14);
 grid on
@@ -95,6 +97,10 @@ stima_consumi_extF2_val = (phiF2_ext_val) * thetalsF2 + stima_consumi_trend;
 stima_consumi_matF2_val = reshape(stima_consumi_extF2_val, size(G));
 
 figure(9);
+
+stima_consumi4 = phi4*thetals4;
+
+
 mesh(G, O, stima_consumi_matF2_val);
 grid on
 hold on

@@ -29,9 +29,11 @@ stima_consumi2 = phi2 * thetals2;
 consumi2 = consumi2 - stima_consumi2;
 
 consumi2 = consumi2';
+
+
 input = [consumi1,giorni1,ore1]';
 
-net = feedforwardnet(30);
+net = feedforwardnet(11);
 
 net.divideParam.trainRatio = 0.7;
 net.divideParam.valRatio = 0.2;
@@ -39,6 +41,8 @@ net.divideParam.testRatio = 0.3;
 
 [net,tr] = train(net,input,consumi2);
 output = net(input);
+
+
 output = output';
 
 figure(1)
